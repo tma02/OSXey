@@ -14,7 +14,7 @@ fi
 # ==MODEL==
 model=$(system_profiler SPHardwareDataType -detailLevel mini | awk '/Model Identifier/ { print $3 }')
 # use grep to find the model in the list, then delete from ) to end of line
-modelname=`grep $model Models.txt | sed -e 's/).*/)/g'`
+modelname=`grep $model /usr/local/bin/Models.txt | sed -e 's/).*/)/g'`
 
 # ==GRAPHICS==
 graphics=$(system_profiler SPDisplaysDataType |
@@ -35,37 +35,40 @@ awk '/Model/{for (i=1; i<=NF-3; i++) $i = $(i+3); NF-=3; print}' | paste -sd "/"
 # ==VERSION==
 versionNumber=$(sw_vers -productVersion) # Finds version number
 
-versionShort=${versionNumber:0:4}  # Cut sting to 1 decimal place for calculation
+versionShort=${versionNumber:0:5}  # Cut sting to 2 decimal places for calculation
 		 
 case $versionShort in
-	10.9)
+	10.10)
+		versionString="Yosemite"
+		;;
+	10.9.)
 		versionString="Mavericks"
 		;;
-	10.8)
+	10.8.)
 		versionString="Mountian Lion"
 		;;
-	10.7)
+	10.7.)
 		versionString="Lion"
 		;;
-	10.6)
+	10.6.)
 		versionString="Snow Leopard"
 		;;
-	10.5)
+	10.5.)
 		versionString="Leopard"
 		;;
-	10.4)
+	10.4.)
 		versionString="Tiger"
 		;;
-	10.3)
+	10.3.)
 		versionString="Panther"
 		;;
-	10.2)
+	10.2.)
 		versionString="Jaguar"
 		;;
-	10.1)
+	10.1.)
 		versionString="Puma"
 		;;
-	10.0)
+	10.0.)
 		versionString="Cheetah"
 		;;
 esac
@@ -73,7 +76,7 @@ esac
 version="OS X $versionNumber $versionString"
 
 # ==KERNEL==
-kernel="XNU"
+kernel="uname -srm"
 
 # ==UPTIME==
 uptime=$(uptime | sed 's/.*up \([^,]*\), .*/\1/')
