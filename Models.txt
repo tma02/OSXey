@@ -12,6 +12,7 @@
 
 ### MacBook Pro 13-inch
 
+MacBook Pro (Retina, 13-inch, Early 2015) MacBookPro12,1
 MacBook Pro (Retina, 13-inch, Late 2013)	MacBookPro11,1
 MacBook Pro (Retina, 13-inch, Early 2013/Late 2012)	MacBookPro10,2	
 MacBook Pro (13-inch, Mid 2012)	            MacBookPro9,2	
